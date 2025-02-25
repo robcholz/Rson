@@ -19,11 +19,13 @@ pub enum Token {
 }
 
 #[derive(Debug)]
+#[allow(dead_code)]
 struct Tokenizer<'a> {
     input: &'a str,
     position: usize,
 }
 
+#[allow(dead_code)]
 impl<'a> Tokenizer<'a> {
     pub fn new(input: &'a str) -> Self {
         Tokenizer { input, position: 0 }
@@ -183,6 +185,7 @@ struct TokenIterator {
     buffer: Option<Token>,
 }
 
+#[allow(dead_code)]
 impl TokenIterator {
     pub fn new(tokens: Vec<Token>) -> TokenIterator {
         Self {
@@ -206,9 +209,11 @@ impl TokenIterator {
 }
 
 #[derive(Debug, PartialEq)]
+#[allow(dead_code)]
 pub(crate) struct JsonNumber(String);
 
 #[derive(Debug)]
+#[allow(dead_code)]
 pub(crate) enum JsonObject {
     Object(HashMap<String, JsonObject>),
     Array(Vec<JsonObject>),
@@ -219,6 +224,7 @@ pub(crate) enum JsonObject {
     Null,
 }
 
+#[allow(dead_code)]
 impl JsonNumber {
     pub fn new(num: String) -> Self {
         Self { 0: num }
@@ -233,6 +239,7 @@ impl JsonNumber {
     }
 }
 
+#[allow(dead_code)]
 impl JsonObject {
     pub fn parse(input: &str) -> Result<JsonObject, String> {
         let tokens = Tokenizer::new(input).tokenize()?;
